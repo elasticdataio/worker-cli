@@ -30,6 +30,7 @@
 # parcel-bundler cache (https://parceljs.org/)
 # public
 # vuepress build output
+.idea
 *-debug.log
 *-error.log
 *.lcov
