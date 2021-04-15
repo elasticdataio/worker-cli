@@ -1,7 +1,7 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
     "ed-cli": "./bin/run",
@@ -43,7 +43,7 @@
   ],
   "homepage": "https://github.com/elasticdataio/worker-cli",
   "keywords": [
-    "oclif"
+    "elasticdataio", "parser", "scraper"
   ],
   "license": "MIT",
   "main": "lib/index.js",
