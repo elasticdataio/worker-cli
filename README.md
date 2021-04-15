@@ -16,28 +16,28 @@ CLI of elasticdata.io worker
 <!-- usage -->
 ```sh-session
 $ npm install -g @elasticdataio/worker-cli
-$ ed COMMAND
+$ ed-cli COMMAND
 running command...
-$ ed (-v|--version|version)
+$ ed-cli (-v|--version|version)
 @elasticdataio/worker-cli/0.0.34 darwin-x64 node-v14.16.0
-$ ed --help [COMMAND]
+$ ed-cli --help [COMMAND]
 USAGE
-  $ ed COMMAND
+  $ ed-cli COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`ed help [COMMAND]`](#ed-help-command)
-* [`ed run -f [path to json file]`](#ed-run--f-path-to-json-file)
+* [`ed-cli help [COMMAND]`](#ed-help-command)
+* [`ed-cli run -f [path to json file]`](#ed-run--f-path-to-json-file)
 
-## `ed help [COMMAND]`
+## `ed-cli help [COMMAND]`
 
-display help for ed
+display help for ed-cli
 
 ```
 USAGE
-  $ ed help [COMMAND]
+  $ ed-cli help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -48,13 +48,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `ed run -f [path to json file]`
+## `ed-cli run -f [path to json file]`
 
 Run pipeline from JSON config file
 
 ```
 USAGE
-  $ ed run -f [path to json file]
+  $ ed-cli run -f [path to json file]
 
 OPTIONS
   -d, --debug          Show info, warning and error messages
