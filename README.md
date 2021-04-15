@@ -19,7 +19,7 @@ $ npm install -g @elasticdataio/worker-cli
 $ ed COMMAND
 running command...
 $ ed (-v|--version|version)
-@elasticdataio/worker-cli/0.0.10 darwin-x64 node-v14.16.0
+@elasticdataio/worker-cli/0.0.34 darwin-x64 node-v14.16.0
 $ ed --help [COMMAND]
 USAGE
   $ ed COMMAND
@@ -29,7 +29,7 @@ USAGE
 # Commands
 <!-- commands -->
 * [`ed help [COMMAND]`](#ed-help-command)
-* [`ed run -f`](#ed-run--f)
+* [`ed run -f [path to json file]`](#ed-run--f-path-to-json-file)
 
 ## `ed help [COMMAND]`
 
@@ -48,22 +48,26 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `ed run -f`
+## `ed run -f [path to json file]`
 
 Run pipeline from JSON config file
 
 ```
 USAGE
-  $ ed run -f
+  $ ed run -f [path to json file]
 
 OPTIONS
-  -d, --debug=debug
-  -f, --file=file    absolute path to json file
-  -h, --help         show CLI help
+  -d, --debug          Show info, warning and error messages
+  -e, --preconfigured  Example preconfigured json file for first start
+  -f, --file=file      Absolute path to json file
+  -h, --help           show CLI help
+  -p, --port=port      [default: 3002] Listeners port
+  --headless           Use headless mode
+  --maxTabs=maxTabs    [default: 3] Max chrome tabs
 
 EXAMPLE
-  $ edworker run -f /Users/s/Documents/parse-amazon.json
+  $ ed-cli run -f /Users/s/Documents/parse-amazon.json
 ```
 
-_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.10/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.34/src/commands/run.ts)_
 <!-- commandsstop -->

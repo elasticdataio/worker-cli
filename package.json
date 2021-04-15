@@ -1,14 +1,15 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.10",
+  "version": "0.0.34",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
-    "edworker": "./bin/run"
+    "ed-cli": "./bin/run",
+    "ed-server": "./node_modules/@elasticdataio/worker/dist/main.js"
   },
   "bugs": "https://github.com/elasticdataio/worker-cli/issues",
   "dependencies": {
-    "@elasticdataio/worker": "0.0.7",
+    "@elasticdataio/worker": "0.0.10",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
@@ -38,8 +39,7 @@
     "/bin",
     "/lib",
     "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
-    ".env"
+    "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/elasticdataio/worker-cli",
   "keywords": [
