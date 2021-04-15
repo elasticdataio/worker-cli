@@ -19,7 +19,7 @@ $ npm install -g @elasticdataio/worker-cli
 $ ed-cli COMMAND
 running command...
 $ ed-cli (-v|--version|version)
-@elasticdataio/worker-cli/0.0.34 darwin-x64 node-v14.16.0
+@elasticdataio/worker-cli/0.0.36 darwin-x64 node-v14.16.0
 $ ed-cli --help [COMMAND]
 USAGE
   $ ed-cli COMMAND
@@ -28,8 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`ed-cli help [COMMAND]`](#ed-help-command)
-* [`ed-cli run -f [path to json file]`](#ed-run--f-path-to-json-file)
+* [`ed-cli help [COMMAND]`](#ed-cli-help-command)
+* [`ed-cli run -f [path to json file]`](#ed-cli-run--f-path-to-json-file)
 
 ## `ed-cli help [COMMAND]`
 
@@ -69,5 +69,5 @@ EXAMPLE
   $ ed-cli run -f /Users/s/Documents/parse-amazon.json
 ```
 
-_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.34/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.36/src/commands/run.ts)_
 <!-- commandsstop -->

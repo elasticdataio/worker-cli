@@ -1,7 +1,7 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
     "ed-cli": "./bin/run",
@@ -49,7 +49,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "ed",
+    "bin": "ed-cli",
     "plugins": [
       "@oclif/plugin-help"
     ]
