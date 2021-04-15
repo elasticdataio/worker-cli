@@ -1,7 +1,7 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.36",
+  "version": "0.0.39",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
     "ed-cli": "./bin/run",

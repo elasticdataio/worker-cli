@@ -12,7 +12,7 @@ export default class Run extends Command {
   ]
 
   static flags = {
-    help: flags.help({char: 'h'}),
+    help: flags.help({char: 'h', hidden: true}),
     debug: flags.boolean({char: 'd', description: 'Show info, warning and error messages'}),
     headless: flags.boolean({description: 'Use headless mode'}),
     maxTabs: flags.integer({description: 'Max chrome tabs', default: 3}),
