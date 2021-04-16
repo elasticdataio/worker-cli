@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:13.10.1-slim@sha256:88da5cd281ece24309c4e6fcce000a8001b17804e19f94a0439954568716a668
 WORKDIR /app
 RUN  apt-get update \
      && apt-get install -y wget --no-install-recommends \

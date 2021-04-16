@@ -45,7 +45,7 @@ spec:
 				container('docker') {
               env.DOCKER_TAG = "${BRANCH_NAME}_${BUILD_NUMBER}"
               stage('build') {
-                  sh 'docker build --build-arg CACHE_DATE=\"$(date)\" -f install/Dockerfile -t localhost:32000/worker-cli:${DOCKER_TAG} .'
+                  sh 'docker build --build-arg CACHE_DATE=\\"$(date)\\" -f install/Dockerfile -t localhost:32000/worker-cli:${DOCKER_TAG} .'
               }
               stage('publish') {
 //                   sh 'docker push localhost:32000/worker-cli:${DOCKER_TAG}'
