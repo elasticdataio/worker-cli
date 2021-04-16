@@ -60,7 +60,7 @@ EXAMPLE
   $ ed-cli run -f parse-amazon.json
 ```
 
-_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.54/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.55/src/commands/run.ts)_
 <!-- commandsstop -->
 
 ## Other documentation
