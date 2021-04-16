@@ -4,4 +4,5 @@ export interface Configuration {
   headless: boolean;
   maxChromeTabs: number;
   preconfigured: boolean;
+  timeout: number;
 }

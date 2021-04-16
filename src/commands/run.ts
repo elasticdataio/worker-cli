@@ -1,6 +1,8 @@
 import {Command, flags} from '@oclif/command'
+import * as chalk from 'chalk'
 import Webserver from "../webserver";
 import * as fs from "fs";
+import * as path from "path";
 import {Configuration} from "../models/configuration.model";
 import {examplePipeline} from "../preconfigured/example";
 
@@ -18,7 +20,13 @@ export default class Run extends Command {
     maxTabs: flags.integer({description: 'Max chrome tabs', default: 3}),
     port: flags.integer({char: 'p', description: 'Listeners port', default: 3002}),
     file: flags.string({char: 'f', description: 'Absolute path to json file'}),
-    preconfigured: flags.boolean({char: 'e', description: 'Example preconfigured json file for first start'}),
+    preconfigured: flags.boolean({description: 'Example preconfigured json file for first start'}),
+    timeout: flags.integer({
+      char: 't',
+      description: 'Maximum waiting time for a worker in minutes',
+      default: 5
+    }),
+    display: flags.boolean({description: 'Display data after worker finishes'}),
   }
   static usage = 'run -f [path to json file]'
   static args = [{name: 'file'}]
@@ -28,32 +36,46 @@ export default class Run extends Command {
     const file = flags.file
     const maxChromeTabs = flags.maxTabs
     const port = flags.port
+    const timeout = flags.timeout
     const debug = Boolean(flags.debug)
     const headless = Boolean(flags.headless)
     const preconfigured = Boolean(flags.preconfigured)
+    const display = Boolean(flags.display)
+    const webserver = new Webserver()
     if (file || preconfigured) {
+      const filePath = file && path.resolve(file);
       try {
-        const webserver = new Webserver()
-        await webserver.stop();
-        await webserver.start({
+        const config = {
           debug,
           headless,
           port,
           maxChromeTabs,
-        } as Configuration)
-        if (file && !fs.existsSync(file)) {
-          this.error(`file: ${file} not exists`);
+          timeout,
+        } as Configuration
+        await webserver.start(config)
+        if (filePath && !fs.existsSync(filePath)) {
+          this.error(`file: ${filePath} not exists`);
           return;
         }
-        const json = file && fs.readFileSync(file).toString();
+        const json = filePath && fs.readFileSync(filePath).toString();
         const pipeline = preconfigured
           ? examplePipeline
           : JSON.parse(json || '{}');
-        const result = await webserver.run(pipeline);
-        this.log(`<--RETURN DATA:`);
-        this.log(JSON.stringify(result, null, 4));
-        this.log(`<--DONE---Press Ctrl + C for exit process`);
+        const result = await webserver.run(pipeline, config);
+        const data = JSON.stringify(result, null, 4);
+        this.log(`<--CLI RESPONSE:`);
+        this.log(chalk.yellow(data));
+        if (display && result.fileLink) {
+          const fileLink = result.fileLink.replace('file://', '');
+          const parsedData = fs.readFileSync(fileLink).toString();
+          this.log(`<--CLI PARSED DATA:`);
+          this.log(chalk.green(parsedData));
+        }
+        await webserver.kill();
       } catch (e) {
+        try {
+          await webserver.kill();
+        } catch (e) {}
         this.error(e);
       }
       return;

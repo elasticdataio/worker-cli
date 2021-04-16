@@ -1,5 +1,6 @@
 import {Configuration} from "./models/configuration.model";
 import {ChildProcess} from "child_process";
+import * as chalk from 'chalk'
 
 const fs = require('fs');
 const path = require('path');
@@ -13,20 +14,10 @@ export default class Webserver {
   private debug = false;
   private port = 3002;
   private tmpDir = os.tmpdir();
-  private child: ChildProcess | undefined;
+  private child!: ChildProcess;
 
-  public async stop() {
-    try {
-      this.child?.stderr.pause();
-      this.child?.stdout.pause();
-      this.child?.stdin.end();
-      this.child?.kill();
-    } catch (e) {}
-    try {
-      const pid = fs.readFileSync(path.join(this.tmpDir, 'pid')).toString();
-      process.kill(pid);
-      fs.rmdirSync(path.join(this.tmpDir, 'pid'));
-    } catch (e) {}
+  public async kill() {
+    this.child.kill('SIGINT')
   }
 
   public async start(config: Configuration): Promise<number> {
@@ -41,7 +32,7 @@ export default class Webserver {
       'ed-server',
       [],
       {
-        shell: true,
+        shell: false,
         env: {
           PORT: this.port,
           DEBUG: debug,
@@ -51,7 +42,6 @@ export default class Webserver {
           DATA_SERVICE_URL: `http://localhost:${this.port}`,
           TMP_FOLDER: process.cwd(),
         },
-        stdio: 'pipe',
       }
     );
     child.stderr.pipe(process.stderr);
@@ -59,16 +49,15 @@ export default class Webserver {
       child.stdout.pipe(process.stdout);
       child.stdin.pipe(process.stdin);
     }
-    process.on('exit', () => child.kill());
     await this.waitWebServer(true);
     fs.writeFileSync(path.join(this.tmpDir, 'pid'), child.pid.toString());
     return child.pid;
   }
 
-  public async run(pipeline: object): Promise<any> {
-    const timeoutMin = 60 * 1000 * 5;
+  public async run(pipeline: object, config: Configuration): Promise<any> {
+    const timeoutMin = 60 * 1000 * config.timeout;
     console.log(`-->PIPELINE:`)
-    console.log(JSON.stringify(pipeline, null, 4))
+    console.log(chalk.gray(JSON.stringify(pipeline, null, 4)))
     const response = await axios.post(
       `http://localhost:${this.port}/v1/run-sync`,
       pipeline,
@@ -77,7 +66,6 @@ export default class Webserver {
     if (response.status < 200 || response.status >= 400) {
       console.log(response);
     }
-    await this.stop();
     return response.data;
   }
 

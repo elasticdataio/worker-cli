@@ -47,18 +47,20 @@ USAGE
   $ ed-cli run -f [path to json file]
 
 OPTIONS
-  -d, --debug          Show info, warning and error messages
-  -e, --preconfigured  Example preconfigured json file for first start
-  -f, --file=file      Absolute path to json file
-  -p, --port=port      [default: 3002] Listeners port
-  --headless           Use headless mode
-  --maxTabs=maxTabs    [default: 3] Max chrome tabs
+  -d, --debug            Show info, warning and error messages
+  -f, --file=file        Absolute path to json file
+  -p, --port=port        [default: 3002] Listeners port
+  -t, --timeout=timeout  [default: 5] Maximum waiting time for a worker in minutes
+  --display              Display data after worker finishes
+  --headless             Use headless mode
+  --maxTabs=maxTabs      [default: 3] Max chrome tabs
+  --preconfigured        Example preconfigured json file for first start
 
 EXAMPLE
   $ ed-cli run -f /Users/s/Documents/parse-amazon.json
 ```
 
-_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.40/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.52/src/commands/run.ts)_
 <!-- commandsstop -->
 
 ## Other documentation

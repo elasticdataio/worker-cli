@@ -1,7 +1,7 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.41",
+  "version": "0.0.53",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
     "ed-cli": "./bin/run",
@@ -14,12 +14,14 @@
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
     "axios": "^0.21.1",
+    "chalk": "^4.1.0",
     "tslib": "^1.14.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.16",
+    "@types/chalk": "^2.2.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.56",
     "chai": "^4.3.4",
@@ -43,7 +45,9 @@
   ],
   "homepage": "https://github.com/elasticdataio/worker-cli",
   "keywords": [
-    "elasticdataio", "parser", "scraper"
+    "elasticdataio",
+    "parser",
+    "scraper"
   ],
   "license": "MIT",
   "main": "lib/index.js",
