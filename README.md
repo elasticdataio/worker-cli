@@ -48,7 +48,7 @@ USAGE
 
 OPTIONS
   -d, --debug            Show info, warning and error messages
-  -f, --file=file        Absolute path to json file
+  -f, --file=file        Relative or absolute path to json file
   -p, --port=port        [default: 3002] Listeners port
   -t, --timeout=timeout  [default: 5] Maximum waiting time for a worker in minutes
   --display              Display data after worker finishes
@@ -57,10 +57,10 @@ OPTIONS
   --preconfigured        Example preconfigured json file for first start
 
 EXAMPLE
-  $ ed-cli run -f /Users/s/Documents/parse-amazon.json
+  $ ed-cli run -f parse-amazon.json
 ```
 
-_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.52/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/elasticdataio/worker-cli/blob/v0.0.54/src/commands/run.ts)_
 <!-- commandsstop -->
 
 ## Other documentation

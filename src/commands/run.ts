@@ -10,7 +10,7 @@ export default class Run extends Command {
   static description = 'Run pipeline from JSON config file'
 
   static examples = [
-    `$ ed-cli run -f /Users/s/Documents/parse-amazon.json`,
+    `$ ed-cli run -f parse-amazon.json`,
   ]
 
   static flags = {
@@ -19,7 +19,7 @@ export default class Run extends Command {
     headless: flags.boolean({description: 'Use headless mode'}),
     maxTabs: flags.integer({description: 'Max chrome tabs', default: 3}),
     port: flags.integer({char: 'p', description: 'Listeners port', default: 3002}),
-    file: flags.string({char: 'f', description: 'Absolute path to json file'}),
+    file: flags.string({char: 'f', description: 'Relative or absolute path to json file'}),
     preconfigured: flags.boolean({description: 'Example preconfigured json file for first start'}),
     timeout: flags.integer({
       char: 't',
