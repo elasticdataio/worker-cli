@@ -50,8 +50,8 @@ spec:
               stage('publish') {
                   sh 'docker push localhost:32000/worker-cli:${DOCKER_TAG}'
                   sh "docker login -u elasticdataio -p '!Prisoner31!'"
-                  sh 'docker tag localhost:32000/worker-cli:${DOCKER_TAG} elasticdataio/worker-cli:${DOCKER_TAG}'
-                  sh 'docker push elasticdataio/worker-cli:${DOCKER_TAG}'
+                  sh 'docker tag localhost:32000/worker-cli:${DOCKER_TAG} elasticdataio/worker-cli:0.1'
+                  sh 'docker push elasticdataio/worker-cli:0.1'
               }
 				}
 			}

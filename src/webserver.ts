@@ -32,7 +32,7 @@ export default class Webserver {
       'ed-server',
       [],
       {
-        shell: false,
+        shell: true,
         env: {
           PORT: this.port,
           DEBUG: debug,
@@ -49,6 +49,7 @@ export default class Webserver {
       child.stdout.pipe(process.stdout);
       child.stdin.pipe(process.stdin);
     }
+    this.child.on('error', console.error);
     await this.waitWebServer(true);
     fs.writeFileSync(path.join(this.tmpDir, 'pid'), child.pid.toString());
     return child.pid;
