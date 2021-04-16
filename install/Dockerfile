@@ -9,7 +9,5 @@ RUN  apt-get update \
      && rm -rf /var/lib/apt/lists/* \
      && wget --quiet https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/sbin/wait-for-it.sh \
      && chmod +x /usr/sbin/wait-for-it.sh
-ARG CACHE_DATE=2016-01-01
+ARG CACHE_DATE
 RUN npm i -g --unsafe-perm=true  @elasticdataio/worker-cli
-
-CMD ["sleep", "infinity"]
