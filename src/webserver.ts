@@ -28,12 +28,14 @@ export default class Webserver {
     if (isReachable) {
       throw new Error(`Port is ${port} busy. Please check listeners: "netstat -ntlp"`)
     }
+
     const child = this.child = spawn(
       'ed-server',
       [],
       {
         shell: true,
         env: {
+          ...process.env,
           PORT: this.port,
           DEBUG: debug,
           PUPPETEER_HEADLESS: headless ? '1' : '0',
