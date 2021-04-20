@@ -1,7 +1,7 @@
 {
   "name": "@elasticdataio/worker-cli",
   "description": "CLI of elasticdata.io worker",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "author": "sergey tkachenko @elasticdataio",
   "bin": {
     "ed-cli": "./bin/run",
@@ -9,7 +9,7 @@
   },
   "bugs": "https://github.com/elasticdataio/worker-cli/issues",
   "dependencies": {
-    "@elasticdataio/worker": "^0.0.14",
+    "@elasticdataio/worker": "^0.0.15",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
